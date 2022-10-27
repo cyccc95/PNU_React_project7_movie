@@ -1,0 +1,14 @@
+/* Nav.js */
+.nav {
+  background-color: cornflowerblue;
+  color: white;
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+}
+
+/* Main */
+.main {
+  display: flex;
+}
+
