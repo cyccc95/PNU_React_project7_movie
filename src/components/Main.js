@@ -1,7 +1,8 @@
 import Style from './Style.css';
+import Detail from './Detail';
 import {useEffect, useRef, useState} from 'react';
-import image from './React.png';
-import {NoDetail, MvDetail} from './Detail';
+import {Link} from 'react-router-dom';
+
 
 function Main(){
   // list를 담을 mv state변수
@@ -14,69 +15,66 @@ function Main(){
     fetch(url)
       .then((resp) => resp.json())
       .then((data) => {
-        
-        mv = data.boxOfficeResult.dailyBoxOfficeList;
-        
-
-        setMv(mv.map((m) =>
-          <tr key={m.movieCd} onMouseEnter={(e) => {e.preventDefault(); setView(view = <MvDetail item={m.movieCd} />)}}>
-            <td>{m.rank}</td>
-            <td>{m.movieNm}</td>
-            <td>{m.salesShare}%</td>
-            <td>{m.audiAcc}명</td>
-          </tr>
-        ))
+        const res = data.boxOfficeResult.dailyBoxOfficeList;
+                
+        setMv(
+          res.map((m) => (
+            <div
+              className='mvChartContent' 
+              key={m.movieCd}
+              onClick={(e) => {
+                e.preventDefault();
+                <Link to="/Detail"></Link>
+              }}
+            >
+              <span className='rank'>{m.rank}</span>
+              <span className='movieNm'>{m.movieNm}</span>
+              <span className='salesShare'>{m.salesShare}%</span>
+              <span className='audiAcc'>{m.audiAcc}명</span>
+            </div>
+          )
+        ));
       })
       .catch((err) => {console.log(err)})
   }
 
   // 최초 랜더링 되면 어제 날짜 list 보여줌
   useEffect(() => {
-    let today = new Date()
-    let yesterday = new Date(today)
-    yesterday.setDate(today.getDate() - 1)
-    let year = String(yesterday.getFullYear())
-    let month = String(yesterday.getMonth() + 1)
-    let day = String(yesterday.getDate())
+    let today = new Date();
+    let yesterday = new Date(today);
+    yesterday.setDate(today.getDate() - 1);
+    let year = String(yesterday.getFullYear());
+    let month = String(yesterday.getMonth() + 1);
+    let day = String(yesterday.getDate());
 
-    let dd = year + month + day
-    mvLoad(dd)
+    let dd = year + month + day;
+    mvLoad(dd);
   },[])
 
+  const dRef = useRef();
  
-
-  const dRef = useRef()
-
   // 날짜 선택하면 변경해서 list 보여주도록 요청
   const handleChange = (e) => {
     e.preventDefault();
-    let dd = dRef.current.value.replaceAll('-','')
-    mvLoad(dd)
-    
+    let dd = dRef.current.value.replaceAll('-','');
+    mvLoad(dd);  
   }
   
-  let [view, setView] = useState(<NoDetail />)
-
   return(
     <div className="main">
-      <div className='selectDate'>
-        <form>
-          <input type='date' ref={dRef} name='d' onChange={handleChange} />
-        </form>
-        <img src={image} alt=""></img>
-      </div>
-      <div className='mvDetail'>
-        {view}
-      </div> 
-      <table className="mvChart">
-        <th>순위</th>
-        <th>영화명</th>
-        <th>점유율</th>
-        <th>관객수</th>
+      <form>
+        <input type='date' ref={dRef} name='d' onChange={handleChange} />
+      </form>
+      <div className="mvChart">
+        <div className='mvChartTitle'>
+          <span className='rank'>순위</span>
+          <span className='movieNm'>영화명</span>
+          <span className='salesShare'>점유율</span>
+          <span className='audiAcc'>관객수</span>
+        </div>
         {mv}
-      </table>
+      </div>
     </div>
-    
   );
 }
 

@@ -9,6 +9,44 @@
 
 /* Main */
 .main {
+  text-align: center;
+}
+form {
+  margin: 30px;
+}
+.mvChart {
+  width: 500px;
+  margin: 0 auto;
+}
+.mvChartTitle {
   display: flex;
+  width: 100%;
+  background-color: cornflowerblue;
+  color: white;
+  border-radius: 10px;
+} 
+.mvChartContent {
+  display: flex;
+  width: 100%;
+  border-bottom: 3px solid cornflowerblue;
+}
+.mvChartContent:hover {
+  background-color:burlywood;
+  color: white;
+}
+.rank {
+  width: 10%;
+} 
+.movieNm {
+  width: 45%;
+}
+.salesShare {
+  width: 20%;
+}
+.audiAcc {
+  width: 25%;
+}
+span {
+  padding: 10px 20px;
 }
 
