@@ -3,11 +3,10 @@ import Detail from './Detail';
 import {useEffect, useRef, useState} from 'react';
 import {Link} from 'react-router-dom';
 
-
 function Main(){
   // list를 담을 mv state변수
   let [mv, setMv] = useState();
-
+    
   // json 받아와서 list 생성하고 보여주는 함수
   const mvLoad = (d) => {
     const url = "https://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=f5eef3421c602c6cb7ea224104795888&targetDt=" + d;
@@ -16,28 +15,23 @@ function Main(){
       .then((resp) => resp.json())
       .then((data) => {
         const res = data.boxOfficeResult.dailyBoxOfficeList;
-                
+        
         setMv(
           res.map((m) => (
-            <div
-              className='mvChartContent' 
-              key={m.movieCd}
-              onClick={(e) => {
-                e.preventDefault();
-                <Link to="/Detail"></Link>
-              }}
-            >
-              <span className='rank'>{m.rank}</span>
-              <span className='movieNm'>{m.movieNm}</span>
-              <span className='salesShare'>{m.salesShare}%</span>
-              <span className='audiAcc'>{m.audiAcc}명</span>
-            </div>
+            <Link to={'/Detail/' + m.movieCd} key={m.movieCd}>
+              <div className='mvChartContent'>
+                <span className='rank'>{m.rank}</span>
+                <span className='movieNm'>{m.movieNm}</span>
+                <span className='salesShare'>{m.salesShare}%</span>
+                <span className='audiAcc'>{m.audiAcc}명</span>
+              </div>
+            </Link>
           )
         ));
       })
       .catch((err) => {console.log(err)})
   }
-
+  
   // 최초 랜더링 되면 어제 날짜 list 보여줌
   useEffect(() => {
     let today = new Date();
@@ -60,6 +54,8 @@ function Main(){
     mvLoad(dd);  
   }
   
+  
+
   return(
     <div className="main">
       <form>

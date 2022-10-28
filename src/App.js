@@ -9,7 +9,7 @@ function App() {
       <Nav />
       <Routes>
         <Route path="/" element={<Main />} />
-        <Route path="/Detail" element={<Detail />} />
+        <Route path="/Detail/:mvCd" element={<Detail />} />
       </Routes>
     </>
   );
