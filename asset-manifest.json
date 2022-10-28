@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/PNU_React_project7_movie/static/css/main.37e54a1f.css",
-    "main.js": "/PNU_React_project7_movie/static/js/main.9e0e6d24.js",
+    "main.js": "/PNU_React_project7_movie/static/js/main.80d6ed6a.js",
     "index.html": "/PNU_React_project7_movie/index.html",
     "main.37e54a1f.css.map": "/PNU_React_project7_movie/static/css/main.37e54a1f.css.map",
-    "main.9e0e6d24.js.map": "/PNU_React_project7_movie/static/js/main.9e0e6d24.js.map"
+    "main.80d6ed6a.js.map": "/PNU_React_project7_movie/static/js/main.80d6ed6a.js.map"
   },
   "entrypoints": [
     "static/css/main.37e54a1f.css",
-    "static/js/main.9e0e6d24.js"
+    "static/js/main.80d6ed6a.js"
   ]
 }
