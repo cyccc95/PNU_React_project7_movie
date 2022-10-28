@@ -18,7 +18,7 @@ function Main(){
         
         setMv(
           res.map((m) => (
-            <Link to={'/Detail/' + m.movieCd} key={m.movieCd}>
+            <Link to={'/PNU_React_project7_movie/Detail/' + m.movieCd} key={m.movieCd}>
               <div className='mvChartContent'>
                 <span className='rank'>{m.rank}</span>
                 <span className='movieNm'>{m.movieNm}</span>
