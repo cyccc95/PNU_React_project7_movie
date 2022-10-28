@@ -8,8 +8,8 @@ function App() {
     <>
       <Nav />
       <Routes>
-        <Route path="/" element={<Main />} />
-        <Route path="/Detail/:mvCd" element={<Detail />} />
+        <Route path="/PNU_React_project7_movie" element={<Main />} />
+        <Route path="/PNU_React_project7_movie/Detail/:mvCd" element={<Detail />} />
       </Routes>
     </>
   );

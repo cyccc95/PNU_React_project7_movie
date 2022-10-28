@@ -66,7 +66,7 @@ function Detail(){ // props : 문자열 "" , 문자열 외의 값 {}
   return(
     <>
       <div  className="goHome">
-        <Link to="/">홈으로</Link>
+        <Link to="/PNU_React_project7_movie">홈으로</Link>
       </div>
       {mv}
     </>
