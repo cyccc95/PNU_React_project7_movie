@@ -19,7 +19,7 @@ function Detail(){ // props : 문자열 "" , 문자열 외의 값 {}
   let [mv,setMv] = useState();
 
   useEffect(() => {
-    let url = 'http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.json?key=f5eef3421c602c6cb7ea224104795888&movieCd=' + mvCd;
+    let url = 'https://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.json?key=f5eef3421c602c6cb7ea224104795888&movieCd=' + mvCd;
     fetch(url)
       .then((resp) => resp.json())
       .then((data) => {
